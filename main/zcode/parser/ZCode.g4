@@ -9,65 +9,68 @@ options {
 	language = Python3;
 }
 
-program: newlinelist decllist EOF; // Chuong trinh bao gom nhieu khai bao
+program:
+	newlinelist decllist EOF; // Chuong trinh bao gom nhieu khai bao
 
-decllist:
+decllist: //ok
 	decl decllist
 	| decl; // Bieu dien danh sach khai bao khong rong
 
-decl:
+decl: //ok
 	vardecl
 	| funcdecl; // Khai bao co the la khai bao ham hoac khai bao bien
 
 /* KHAI BAO BIEN */
 
-vardecl:
+vardecl: //ok
 	typdecl
 	| varkeydecl
 	| dynamicdecl; // Co 3 cach khai bao bien
 
-typdecl:
-	typ ID ASSIGN1_OPERATOR expr newlinelistnonull | typ ID newlinelistnonull
+typdecl: //ok
+	typ ID ASSIGN1_OPERATOR expr newlinelistnonull
+	| typ ID newlinelistnonull
 	| arraydecl; //Khai bao bien kieu nguyen thuy
 
-varkeydecl:
+varkeydecl: //ok
 	VAR_KEY ID ASSIGN1_OPERATOR expr newlinelistnonull; //Khai bao bien voi tu khoa var
 
-dynamicdecl:
+dynamicdecl: //ok
 	DYNAMIC_KEY ID (ASSIGN1_OPERATOR expr)? newlinelistnonull; //Khai bao bien voi tu khoa dynamic
 
 /* KHAI BAO HAM */
 
-funcdecl:
+funcdecl: //ok
 	FUNC_KEY ID paralist newlinelist (returnstmt | blockstmt)
-	| FUNC_KEY ID paralist newlinelistnonull; // Khai bao ham (cho phep tien khai bao)
+	| FUNC_KEY ID paralist newlinelistnonull; // Khai bao ham (cho phep tien khai bao) //ok
 
 /* KHAI BAO MANG */
 
 arraydecl:
-	typ ID LSB sizelist RSB (ASSIGN1_OPERATOR arrayvalue)? newlinelistnonull; //Khai bao array
+	typ ID LSB sizelist RSB (ASSIGN1_OPERATOR arrayvalue)? newlinelistnonull; //Khai bao array //ok
 
-arrayparameter:
-	typ ID LSB sizelist RSB (ASSIGN1_OPERATOR arrayvalue)?; //Khai bao array
+arrayparameter: //ok
+	typ ID LSB sizelist RSB; //Khai bao tham so array
 
-arrayvalue:
+arrayvalue: //ok
 	arrayval
 	| arrayvallist; //Gia tri cua mang (co the 1 chieu hoac da chieu)
 
-arrayval: LSB index RSB; //Gia tri array 1 chieu
+arrayval: LSB index RSB; //Gia tri array 1 chieu //ok
 
-arrayvallist:
+arrayvallist: //ok
 	LSB listarrayval RSB; //List cac gia tri array 1 chieu
 
-listarrayval:
+listarrayval: //ok
 	arrayval COMMA listarrayval
 	| arrayval; //Gia tri cuoi cung cua array da chieu
 
 sizelist:
 	NUMBER COMMA sizelist
 	| NUMBER; //Danh sach kich thuoc cua khai bao mang
+
 /* LENH */
-statement: // Cau lenh (gom nhieu loai cau lenh)
+statement: // Cau lenh (gom nhieu loai cau lenh) //ok
 	vardecl //Lenh Khai bao bien
 	| assignstmt //Lenh gan
 	| ifstmt //Lenh if
@@ -80,40 +83,41 @@ statement: // Cau lenh (gom nhieu loai cau lenh)
 
 stmtlist:
 	statement stmtlist
-	|; //Danh sach cac cau lenh trong block (co the rong)
+	|; //Danh sach cac cau lenh trong block (co the rong) //ok
 
 blockstmt:
-	BEGIN_KEY newlinelistnonull stmtlist END_KEY newlinelistnonull; // Lenh block
+	BEGIN_KEY newlinelistnonull stmtlist END_KEY newlinelistnonull; // Lenh block //ok
 
-funccallstmt: ID LB argumentlist RB newlinelist; //Lenh goi ham
+funccallstmt:
+	ID LB argumentlist RB newlinelist; //Lenh goi ham //ok
 
-returnstmt:
+returnstmt: //ok
 	RETURN_KEY expr? newlinelistnonull; //Lenh Return , can xem xet doan \n
 
-continuestmt: CONTINUE_KEY newlinelistnonull;
+continuestmt: CONTINUE_KEY newlinelistnonull; //ok
 
 forstmt:
-	FOR_KEY numbervariable UNTIL_KEY expr BY_KEY expr newlinelist statement; //Lenh for
+	FOR_KEY numbervariable UNTIL_KEY expr BY_KEY expr newlinelist statement; //Lenh for //ok
 
-breakstmt: BREAK_KEY newlinelistnonull;
+breakstmt: BREAK_KEY newlinelistnonull; //ok
 
-ifstmt: //Lenh if
+ifstmt: //Lenh if //ok
 	IF_KEY LB expr RB newlinelist statement eliflist (
 		ELSE_KEY statement
 	)?;
 
 eliflist:
-	elifcomponent eliflist
+	elifcomponent eliflist //ok
 	|; //Danh sach lenh elif co the rong
 
-elifcomponent: ELIF_KEY expr newlinelist statement;
+elifcomponent: ELIF_KEY expr newlinelist statement; //ok
 
 assignstmt:
-	lhs ASSIGN1_OPERATOR expr newlinelistnonull; //Lenh gan
+	lhs ASSIGN1_OPERATOR expr newlinelistnonull; //Lenh gan //ok
 
 /* OPERATORS */
 
-relationaloperator:
+relationaloperator: //ok
 	EQUAL_OPERATOR
 	| ASSIGN2_OPERATOR
 	| NE_OPERATOR
@@ -122,60 +126,53 @@ relationaloperator:
 	| LE_OPERATOR
 	| L_OPERATOR;
 
-logicoperator: AND_OPERATOR | OR_OPERATOR | NOT_OPERATOR;
-
-arithmeticoperator:
-	ADD_OPERATOR
-	| SUB_OPERATOR
-	| MODULO_OPERATOR
-	| DIV_OPERATOR
-	| MUL_OPERATOR;
-
-
-
 /* EXPRESSION */
 
-expr: expr1 CONCAT_OPERATOR expr1 | expr1; //Khai trien bieu thuc
+expr:
+	expr1 CONCAT_OPERATOR expr1
+	| expr1; //Khai trien bieu thuc //OK
 
-expr1: expr2 relationaloperator expr2 | expr2;
+expr1: expr2 relationaloperator expr2 | expr2; //ok
 
-expr2: expr2 (AND_OPERATOR | OR_OPERATOR) expr3 | expr3;
+expr2: expr2 (AND_OPERATOR | OR_OPERATOR) expr3 | expr3; //ok
 
-expr3: expr3 (ADD_OPERATOR | SUB_OPERATOR) expr4 | expr4;
+expr3: expr3 (ADD_OPERATOR | SUB_OPERATOR) expr4 | expr4; //ok
 
 expr4:
-	expr4 (MUL_OPERATOR | DIV_OPERATOR | MODULO_OPERATOR) expr5
+	expr4 (MUL_OPERATOR | DIV_OPERATOR | MODULO_OPERATOR) expr5 //ok
 	| expr5;
 
-expr5: NOT_OPERATOR expr5 | expr6;
+expr5: NOT_OPERATOR expr5 | expr6; //ok
 
-expr6: SUB_OPERATOR expr6 | expr7;
+expr6: SUB_OPERATOR expr6 | expr7; //ok
 
-expr7: expr7 indexoperator | expr8;
+expr7: expr7 indexoperator | expr8; // can chinh sua
 
 expr8:
 	ID
 	| funccallstmt
 	| literal
-	| arrayvalue // Co the phai sua
+	| arrayvalue // Co the phai sua //ok
 	| indexoperator
 	| subexpr;
 
-subexpr: LB expr RB;
+subexpr: LB expr RB; //ok
 
-indexoperator: (ID | funccallstmt) LSB indexope RSB;
+indexoperator: (ID | funccallstmt) LSB indexope RSB; //ok
 
-indexope: expr | expr COMMA indexope;
+indexope: expr | expr COMMA indexope; //ok
 
-argumentlist: argumentprime |; //Danh sach doi so (co the rong)
+argumentlist:
+	argumentprime
+	|; //Danh sach doi so (co the rong) //ok
 
-argumentprime: argument COMMA argumentprime | argument;
+argumentprime: argument COMMA argumentprime | argument; //ok
 
-argument: expr;
+argument: expr; //ok
 
-literal: STRINGLIT | NUMBER | ID | booleanvalue;
+literal: STRINGLIT | NUMBER | ID | booleanvalue; //ok
 
-booleanvalue: TRUE_BOOLEAN | FALSE_BOOLEAN;
+booleanvalue: TRUE_BOOLEAN | FALSE_BOOLEAN; //OK
 
 numbervariable: ID; //ok
 
@@ -200,7 +197,9 @@ paraprime:
 	para COMMA paraprime
 	| para; //Danh sach tham so khong rong //ok
 
-para: typ ID | arrayparameter; //tham so (nguyen thuy hoac array) //ok
+para:
+	typ ID
+	| arrayparameter; //tham so (nguyen thuy hoac array) //ok
 
 /* PRIMITIVE TYPE */
 
@@ -208,7 +207,7 @@ typ:
 	NUM_TYPE
 	| BOOL_TYPE
 	| STRING_TYPE; //Kieu du lieu (gom 3 kieu du lieu nguyen thuy) //ok
-	
+
 //KEY WORD
 
 COMMENT: '##' ~[\r\n]* -> skip;
@@ -304,7 +303,6 @@ RSB: ']';
 COMMA: ',';
 
 //COMMENT
-
 
 //IDENTIFIER
 
