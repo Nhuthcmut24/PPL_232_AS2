@@ -1,0 +1,8 @@
+var i <- 0
+        func foo(number x) begin
+        for i until i >= 10 by 1
+        break
+        continue
+        return
+        end
+        

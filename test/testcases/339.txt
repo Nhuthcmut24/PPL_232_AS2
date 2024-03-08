@@ -1,0 +1,6 @@
+var i <- 0
+        func foo() begin
+        continue
+        return
+        end
+        

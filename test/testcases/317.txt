@@ -1,0 +1,6 @@
+func foo()
+        begin
+        for a until a < 10 by a + 1 
+        b[a] <- a + 1
+        end
+        

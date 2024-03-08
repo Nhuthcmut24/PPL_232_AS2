@@ -1,0 +1,6 @@
+func foo()
+        begin
+        return a
+        x <- 2
+        end
+        

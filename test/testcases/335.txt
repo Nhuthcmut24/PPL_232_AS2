@@ -1,0 +1,7 @@
+func foo()
+        begin
+        if (x+y) y<-"string literal	" + foo(2)
+        elif a b<-5
+        else number x
+        end
+        

@@ -1,0 +1,8 @@
+func foo()
+        begin
+        if (x) 
+        begin
+        y<-"string literal	" + foo(2)
+        end
+        end
+        

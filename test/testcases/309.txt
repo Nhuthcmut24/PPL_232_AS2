@@ -1,0 +1,8 @@
+func foo()
+        begin
+        return a
+        x <- 2
+        y <- -4.5
+        foo(3)
+        end
+        

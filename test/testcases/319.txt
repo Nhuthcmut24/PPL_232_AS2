@@ -1,0 +1,2 @@
+func foo(number a, number b[2])
+        

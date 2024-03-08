@@ -1,0 +1,4 @@
+number a
+        string s <- "Nhut ne"
+        func foo()
+        

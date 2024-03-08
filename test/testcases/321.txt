@@ -1,0 +1,6 @@
+func foo(number a, number b[2])
+        begin
+        break
+        continue
+        end
+        

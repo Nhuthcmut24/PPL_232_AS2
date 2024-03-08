@@ -1,0 +1,5 @@
+func foo()
+        begin
+        for y until 5 by y+1 y<-"string literal	" + foo(2)
+        end
+        

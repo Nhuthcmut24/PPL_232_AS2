@@ -91,6 +91,9 @@ blockstmt:
 funccallstmt:
 	ID LB argumentlist RB newlinelist; //Lenh goi ham //ok
 
+funccallexpr:
+	ID LB argumentlist RB newlinelist; //Lenh goi ham //ok
+
 returnstmt: //ok
 	RETURN_KEY expr? newlinelistnonull; //Lenh Return , can xem xet doan \n
 
@@ -150,60 +153,60 @@ expr7: expr7 indexoperator | expr8; // can chinh sua
 
 expr8:
 	ID
-	| funccallstmt
+	| funccallexpr
 	| literal
 	| arrayvalue // Co the phai sua //ok
 	| indexoperator
 	| subexpr;
 
-subexpr: LB expr RB; //ok
+subexpr: LB expr RB; //ok //checked
 
-indexoperator: (ID | funccallstmt) LSB indexope RSB; //ok
+indexoperator: (ID | funccallstmt) LSB indexope RSB; //ok //checked
 
-indexope: expr | expr COMMA indexope; //ok
+indexope: expr | expr COMMA indexope; //ok //checked
 
-argumentlist:
+argumentlist: //checked
 	argumentprime
 	|; //Danh sach doi so (co the rong) //ok
 
-argumentprime: argument COMMA argumentprime | argument; //ok
+argumentprime: argument COMMA argumentprime | argument; //ok //checked
 
-argument: expr; //ok
+argument: expr; //ok //checked
 
-literal: STRINGLIT | NUMBER | ID | booleanvalue; //ok
+literal: STRINGLIT | NUMBER | ID | booleanvalue; //ok //checked
 
-booleanvalue: TRUE_BOOLEAN | FALSE_BOOLEAN; //OK
+booleanvalue: TRUE_BOOLEAN | FALSE_BOOLEAN; //OK //checked
 
-numbervariable: ID; //ok
+numbervariable: ID; //ok //checked
 
-newlinelist: NEW_LINE newlinelist |; //ok
+newlinelist: NEW_LINE newlinelist |; //ok //checked
 
-newlinelistnonull: NEW_LINE newlinelistnonull | NEW_LINE; //ok
+newlinelistnonull: NEW_LINE newlinelistnonull | NEW_LINE; //ok //checked
 
-lhs: ID | indexexpr | indexoperator; // ok
+lhs: ID | indexexpr | indexoperator; // ok //checked
 
-indexexpr: ID LSB index RSB | ID LSB indexexpr RSB; //ok
+indexexpr: ID LSB index RSB | ID LSB indexexpr RSB; //ok //checked
 
-index: expr COMMA index | expr; //ok
+index: expr COMMA index | expr; //ok //checked
 
-paralist:
+paralist: //checked
 	LB parameterlist RB; //Danh sach tham so cua ham (co the rong) co ngoac //ok
 
-parameterlist:
+parameterlist: //checked
 	paraprime
 	|; //Danh sach tham so cua ham (co the rong) khong ngoac //ok
 
-paraprime:
+paraprime: //checked
 	para COMMA paraprime
 	| para; //Danh sach tham so khong rong //ok
 
-para:
+para: //checked
 	typ ID
 	| arrayparameter; //tham so (nguyen thuy hoac array) //ok
 
 /* PRIMITIVE TYPE */
 
-typ:
+typ: //checked
 	NUM_TYPE
 	| BOOL_TYPE
 	| STRING_TYPE; //Kieu du lieu (gom 3 kieu du lieu nguyen thuy) //ok

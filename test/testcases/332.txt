@@ -1,0 +1,5 @@
+func foo()
+        begin
+        x <- "string literal	"
+        end
+        

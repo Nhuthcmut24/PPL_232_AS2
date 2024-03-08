@@ -1,0 +1,5 @@
+func foo()
+        begin
+        var a <- 3
+        end
+        

@@ -1,0 +1,5 @@
+func foo()
+        begin
+        t <- [[2],[3]]
+        end
+        

@@ -1,0 +1,1 @@
+Program([FuncDecl(Id(foo), [], Block([AssignStmt(Id(x), StringLit(string literal	))]))])
