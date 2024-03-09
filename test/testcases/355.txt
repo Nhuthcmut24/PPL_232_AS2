@@ -1,0 +1,2 @@
+var VoTien <- true and "true" or 1  
+        

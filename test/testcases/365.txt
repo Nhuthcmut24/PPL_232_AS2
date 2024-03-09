@@ -1,0 +1,10 @@
+func foo(number a,number b) 
+        begin
+        if ( a != b)
+        begin
+        dynamic z <- a + b
+        return z
+        end
+        else return a or b
+        end
+        

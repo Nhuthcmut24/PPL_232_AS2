@@ -1,0 +1,1 @@
+Program([FuncDecl(Id(foo), [], Block([VarDecl(Id(name), StringType, None, CallExpr(Id(readString), [])), If((BinaryOp(<=, CallExpr(Id(length), [Id(name)]), NumLit(2.0)), CallStmt(Id(writeString), [StringLit(Name must be at least 4 characters)])), [], CallStmt(Id(writeString), [StringLit(Welcome Mr [name] to PPL Course term 232 of HCMUT)]))]))])

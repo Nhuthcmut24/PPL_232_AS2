@@ -1,0 +1,1 @@
+Program([VarDecl(Id(x), StringType, None, StringLit(be ba ne \t)), FuncDecl(Id(foo), [], Block([AssignStmt(Id(x), BinaryOp(-, BinaryOp(+, NumLit(5.0), BinaryOp(%, NumLit(5.0), NumLit(3.0))), BinaryOp(/, BinaryOp(*, NumLit(8.0), NumLit(12.0)), NumLit(4.0)))), AssignStmt(Id(y), BinaryOp(..., StringLit(be ba ), StringLit(ne)))]))])

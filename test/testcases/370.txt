@@ -1,0 +1,8 @@
+func foo()
+        begin
+            string name <- readString()
+            if (length(name) <= 2) 
+                writeString("Name must be at least 4 characters")
+            else writeString("Welcome Mr [name] to PPL Course term 232 of HCMUT")
+        end
+        

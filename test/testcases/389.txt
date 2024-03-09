@@ -1,0 +1,15 @@
+string x <- "be ba ne \t"
+            func foo() begin
+            x <- 5 + 5 % 3 - 8 * 12 / 4
+            y <- "be ba " ... "ne"
+            var n <- 5 <= 6
+            boolean z <- not 5==6
+            if (z) return true
+            var w <- true and "true" or 1
+            string b[3] <- ["ting"...2]
+            var g <- -1 * not 1
+            var b <- foo()
+            Pi <- 3.14
+            a[1+2,2] <- 1
+            end
+            

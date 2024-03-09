@@ -1,0 +1,9 @@
+func foo()
+        begin
+        if (not(a>=4)) 
+        a <- a + 5
+        elif (a < 0) 
+        a <- 0
+        else a <-1
+        end
+        

@@ -1,0 +1,5 @@
+func foo()
+        begin
+            x <- - 3 + 5 + 7 + not 3
+        end
+        

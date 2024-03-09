@@ -1,0 +1,5 @@
+func foo() begin
+        number x[100]
+        x[1,foo(2)]<- "string\t"
+        end
+        

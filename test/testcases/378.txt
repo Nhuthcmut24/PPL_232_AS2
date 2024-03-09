@@ -1,0 +1,5 @@
+string x <- "be ba ne \t"
+        func foo() begin
+        x <- 5 + 5 % 3
+        end
+        

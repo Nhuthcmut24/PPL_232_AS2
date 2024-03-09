@@ -1,0 +1,5 @@
+func foo()
+        begin
+        x[2+foo(3,4)] <- arr[b[12]] + 5.04e-12
+        end
+        

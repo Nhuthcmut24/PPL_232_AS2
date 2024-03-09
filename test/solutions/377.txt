@@ -1,0 +1,1 @@
+Program([FuncDecl(Id(empty), [], Block([VarDecl(Id(a), NumberType, None, CallExpr(Id(readNumber), [])), If((BinaryOp(!=, Id(a), NumLit(0.0)), Return(Id(a))), [(BinaryOp(>, Id(a), NumLit(0.0)), Return(BinaryOp(*, Id(a), Id(a))))], Return(UnaryOp(-, Id(a))))]))])

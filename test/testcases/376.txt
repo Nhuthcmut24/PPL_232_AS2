@@ -1,0 +1,5 @@
+ func empty()
+        begin
+            return arr(2)[3] + foo(1,2)
+        end
+        

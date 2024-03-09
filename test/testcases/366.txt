@@ -1,0 +1,14 @@
+func foo(number a,number b) 
+        begin
+        if ( a != b)
+        begin
+        dynamic z <- a + b
+        return z
+        end
+        else return a or b
+        end
+        func main()
+        begin
+        a[3+foo(2)] <- a[b[2,3]] + 4
+        end
+        

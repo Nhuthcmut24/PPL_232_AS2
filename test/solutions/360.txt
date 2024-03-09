@@ -1,0 +1,1 @@
+Program([VarDecl(Id(a), None, var, ArrayCell(CallStmt(Id(foo), [NumLit(3.0)]), [NumLit(2.0)]))])

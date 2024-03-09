@@ -1,0 +1,6 @@
+func foo() 
+        begin 
+        for x until x <= 6 by 1
+        arr[x] <- 2 * x
+        end
+        

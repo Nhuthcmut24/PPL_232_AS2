@@ -80,6 +80,7 @@ statement: // Cau lenh (gom nhieu loai cau lenh) //ok
 	| returnstmt //Lenh return
 	| funccallstmt //Lenh goi ham
 	| blockstmt; //Lenh block
+	
 
 stmtlist:
 	statement stmtlist
@@ -161,7 +162,7 @@ expr8:
 
 subexpr: LB expr RB; //ok //checked
 
-indexoperator: (ID | funccallstmt) LSB indexope RSB; //ok //checked
+indexoperator: ID LSB indexope RSB | funccallstmt LSB indexope RSB ; //ok //checked
 
 indexope: expr | expr COMMA indexope; //ok //checked
 

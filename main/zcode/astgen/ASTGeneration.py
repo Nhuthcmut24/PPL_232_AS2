@@ -14,7 +14,7 @@ class ASTGeneration(ZCodeVisitor):
         if ctx.NUM_TYPE():
             return NumberType()
         elif ctx.BOOL_TYPE():
-            return StringType()
+            return BoolType()
         elif ctx.STRING_TYPE():
             return StringType()
     
@@ -110,7 +110,7 @@ class ASTGeneration(ZCodeVisitor):
     def visitIndexoperator(self, ctx: ZCodeParser.IndexoperatorContext):
         if ctx.ID():
             return ArrayCell(Id(ctx.ID().getText()),self.visit(ctx.indexope()))
-        return ArrayCell(self.visit(ctx.callstmt()),self.visit(ctx.indexope()))
+        return ArrayCell(self.visit(ctx.funccallstmt()),self.visit(ctx.indexope()))
     
     
     def visitSubexpr(self,ctx: ZCodeParser.SubexprContext):
@@ -131,7 +131,7 @@ class ASTGeneration(ZCodeVisitor):
         else:
             return self.visit(ctx.subexpr())
         
-        
+    
     # Can chinh sua
     def visitExpr7(self, ctx: ZCodeParser.Expr7Context):
         if ctx.getChildCount() == 1:
@@ -265,7 +265,7 @@ class ASTGeneration(ZCodeVisitor):
             return self.visit(ctx.returnstmt())
         elif ctx.funccallstmt():
             return self.visit(ctx.funccallstmt())
-        else:
+        else :
             return self.visit(ctx.blockstmt())
     
     

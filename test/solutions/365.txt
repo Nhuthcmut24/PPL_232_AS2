@@ -1,0 +1,1 @@
+Program([FuncDecl(Id(foo), [VarDecl(Id(a), NumberType, None, None), VarDecl(Id(b), NumberType, None, None)], Block([If((BinaryOp(!=, Id(a), Id(b)), Block([VarDecl(Id(z), None, dynamic, BinaryOp(+, Id(a), Id(b))), Return(Id(z))])), [], Return(BinaryOp(or, Id(a), Id(b))))]))])

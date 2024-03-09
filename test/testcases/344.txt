@@ -1,0 +1,5 @@
+func foo()
+        begin
+        x <- arr[1] + 5.03e-4
+        end
+        
